@@ -12,6 +12,7 @@ build: build-requirements  ## Build image from Dockerfile.
 	@docker build \
 		--rm \
 		--force-rm \
+		--cache-from $(IMAGE):latest \
 		--tag $(REPO)/$(IMAGE):$(TAG) \
 		--tag $(REPO)/$(IMAGE):latest \
 		--build-arg BASE_IMAGE=$(BASE_IMAGE) \
