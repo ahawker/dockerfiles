@@ -31,7 +31,7 @@ build: build-requirements $(BUILD)  ## Build image from Dockerfile.
 	@docker build \
 		--rm \
 		--force-rm \
-		--no-cache \
+		--cache-from $(REPO)/$(IMAGE):latest \
 		--tag $(REPO)/$(IMAGE):$(TAG) \
 		--tag $(REPO)/$(IMAGE):$(SCALA_VERSION) \
 		--tag $(REPO)/$(IMAGE):latest \

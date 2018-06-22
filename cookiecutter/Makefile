@@ -31,6 +31,7 @@ build: build-requirements $(BUILD)  ## Build image from Dockerfile.
 	@docker build \
 		--rm \
 		--force-rm \
+		--cache-from $(IMAGE):latest \
 		--tag $(REPO)/$(IMAGE):$(TAG) \
 		--tag $(REPO)/$(IMAGE):$(COOKIECUTTER_VERSION) \
 		--tag $(REPO)/$(IMAGE):latest \

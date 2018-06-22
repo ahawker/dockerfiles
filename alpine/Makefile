@@ -12,9 +12,10 @@ build: build-requirements  ## Build image from Dockerfile.
 	@docker build \
 		--rm \
 		--force-rm \
+		--cache-from $(IMAGE):latest \
 		--tag $(REPO)/$(IMAGE):$(TAG) \
 		--tag $(REPO)/$(IMAGE):latest \
-		--build-arg IMAGE=$(IMAGE) \
+		--build-arg BASE_IMAGE=$(BASE_IMAGE) \
 		--build-arg USR=$(USR) \
 		--build-arg GRP=$(GRP) \
 		--build-arg UID=$(UID) \
@@ -37,6 +38,7 @@ build-requirements: requires-REPO \
 	requires-IMAGE \
 	requires-COMMIT \
 	requires-BUILD_ID \
+	requires-BASE_IMAGE \
 	requires-USR \
 	requires-GRP \
 	requires-UID \
