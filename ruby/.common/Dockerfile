@@ -37,12 +37,12 @@ LABEL $LABEL_PREFIX.ruby.version=$RUBY_VERSION \
       $LABEL_PREFIX.gems.version=$GEMS_VERSION \
       $LABEL_PREFIX.bundler.version=$BUNDLER_VERSION
 
-ENV RUBY_VERSION=$RUBY_VERSION \
-    RUBY_GEM_VERSION=$RUBY_GEM_VERSION \
-    GEMS_VERSION=$GEMS_VERSION \
-    BUNDLER_VERSION=$BUNDLER_VERSION
+ENV DOCKERFILES_RUBY_VERSION=$RUBY_VERSION \
+    DOCKERFILES_RUBY_GEM_VERSION=$RUBY_GEM_VERSION \
+    DOCKERFILES_GEMS_VERSION=$GEMS_VERSION \
+    DOCKERFILES_BUNDLER_VERSION=$BUNDLER_VERSION
 
-RUN echo "gem: --no-ri --no-rdoc --no-document --no-suggestions --user-install" > /home/$USR/.gemrc
+RUN echo "gem: --no-ri --no-rdoc --no-document --no-suggestions --user-install" > /home/$DOCKERFILES_USR/.gemrc
 
 USER root
 

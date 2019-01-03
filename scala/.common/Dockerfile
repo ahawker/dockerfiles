@@ -17,15 +17,15 @@ RUN test -n "$LABEL_PREFIX" && \
 
 LABEL $LABEL_PREFIX.scala.version=$SCALA_VERSION
 
-ENV SCALA_VERSION=$SCALA_VERSION
+ENV DOCKERFILES_SCALA_VERSION=$SCALA_VERSION
 
 USER root
 
 RUN apk add --no-cache bash && \
     mkdir -p $SCALA_DIR && \
     wget -qO- https://downloads.lightbend.com/scala/${SCALA_VERSION}/scala-${SCALA_VERSION}.tgz | tar xz -C $SCALA_DIR --strip-components=1 && \
-    chown -R $USR:$USR $SCALA_DIR
+    chown -R $DOCKERFILES_USR:$DOCKERFILES_GRP $SCALA_DIR
 
 ENV PATH=$PATH:$SCALA_DIR/bin
 
-USER $USR
+USER $DOCKERFILES_USR
