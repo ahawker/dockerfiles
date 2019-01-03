@@ -42,7 +42,9 @@ ENV DOCKERFILES_RUBY_VERSION=$RUBY_VERSION \
     DOCKERFILES_GEMS_VERSION=$GEMS_VERSION \
     DOCKERFILES_BUNDLER_VERSION=$BUNDLER_VERSION
 
+RUN echo "gem: --no-ri --no-rdoc --no-document --no-suggestions --user-install" > /root/.gemrc
 RUN echo "gem: --no-ri --no-rdoc --no-document --no-suggestions --user-install" > /home/$DOCKERFILES_USR/.gemrc
+RUN echo "gem: --no-ri --no-rdoc --no-document --no-suggestions --user-install" > /usr/local/etc/gemrc
 
 USER root
 
