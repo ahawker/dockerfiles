@@ -34,6 +34,6 @@ RUN test -n "$LABEL_PREFIX" && \
 
 LABEL $LABEL_PREFIX.remote_syslog2.version=$REMOTE_SYSLOG2_VERSION
 
-ENV REMOTE_SYSLOG2_VERSION=$REMOTE_SYSLOG2_VERSION
+ENV DOCKERFILES_REMOTE_SYSLOG2_VERSION=$REMOTE_SYSLOG2_VERSION
 
 COPY --from=build /usr/local/bin/remote_syslog /usr/local/bin/remote_syslog

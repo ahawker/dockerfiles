@@ -17,16 +17,16 @@ RUN test -n "$LABEL_PREFIX" && \
 
 LABEL $LABEL_PREFIX.sbt.version=$SBT_VERSION
 
-ENV SBT_VERSION=$SBT_VERSION
+ENV DOCKERFILES_SBT_VERSION=$SBT_VERSION
 
 USER root
 
 RUN mkdir -p $SBT_DIR && \
     wget -qO- https://sbt-downloads.cdnedge.bluemix.net/releases/v${SBT_VERSION}/sbt-${SBT_VERSION}.tgz | tar xz -C $SBT_DIR --strip-components=1 && \
-    chown -R $USR:$USR $SBT_DIR
+    chown -R $DOCKERFILES_USR:$DOCKERFILES_GRP $SBT_DIR
 
 ENV PATH=$PATH:$SBT_DIR/bin
 
-USER $USR
+USER $DOCKERFILES_USR
 
 RUN sbt sbtVersion

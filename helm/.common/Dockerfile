@@ -17,13 +17,13 @@ RUN test -n "$LABEL_PREFIX" && \
 
 LABEL $LABEL_PREFIX.helm.version=$HELM_VERSION
 
-ENV HELM_VERSION=$HELM_VERSION
+ENV DOCKERFILES_HELM_VERSION=$HELM_VERSION
 
 USER root
 
 RUN wget -qO- http://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-linux-amd64.tar.gz | tar -xzO linux-amd64/helm > $HELM_PATH
 
-RUN chown -R $USR:$USR $HELM_PATH && \
+RUN chown -R $DOCKERFILES_USR:$DOCKERFILES_USR $HELM_PATH && \
     chmod u+x $HELM_PATH
 
-USER $USR
+USER $DOCKERFILES_USR

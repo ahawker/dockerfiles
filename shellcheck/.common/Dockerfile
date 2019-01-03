@@ -28,12 +28,12 @@ RUN test -n "$LABEL_PREFIX" && \
 
 LABEL $LABEL_PREFIX.shellcheck.version=$SHELLCHECK_VERSION
 
-ENV SHELLCHECK_VERSION=$SHELLCHECK_VERSION
+ENV DOCKERFILES_SHELLCHECK_VERSION=$SHELLCHECK_VERSION
 
 USER root
 
 RUN apk add --no-cache file
 
-USER $USR
+USER $DOCKERFILES_USR
 
 COPY --from=build /bin/shellcheck /usr/local/bin/shellcheck
